@@ -19,8 +19,8 @@ func NewClient() *kbclient.KillBill {
 	trp.Producers["text/xml"] = runtime.TextProducer()
 	// Set this to true to dump http messages
 	trp.Debug = false
-	apiKey := "bob"
-	apiSecret := "lazar"
+	apiKey := "5thJunetenantkey"
+	apiSecret := "5thJunetenantsecret"
 	authWriter := runtime.ClientAuthInfoWriterFunc(func(r runtime.ClientRequest, _ strfmt.Registry) error {
 		encoded := base64.StdEncoding.EncodeToString([]byte("admin" /*username*/ + ":" + "password" /**password*/))
 		if err := r.SetHeaderParam("Authorization", "Basic "+encoded); err != nil {
@@ -58,4 +58,6 @@ func main() {
 	for _, acc := range resp.Payload {
 		fmt.Printf("%s %s %s\n", acc.AccountID, acc.ExternalKey, acc.Email)
 	}
+
+	
 }
